@@ -1,0 +1,81 @@
+  <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">Panel  Administration Site</li>
+        </ul>
+      </div>
+
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li class="menu-text"><%= current_user.prenom %> connecté en tant que <%= current_user.role.nom%></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="callout large primary">
+      <div class="row column text-center">
+        <h1>Espace Administrateur</h1>
+      </div>
+    </div>
+    <div class="alert alert-info">
+      <%= notice%>
+    </div>
+    <center><%= link_to 'Nouveau Post', new_post_path, :class => 'btn btn-info btn-fill' %></center>
+    <span class="left float-right"> <%= link_to 'se deconnecter' , destroy_user_session_path , data: {method: :delete},class: "btn bn-primary"%></span>
+    <br><br>
+
+
+    <div class="row" id="content">
+      <div class="medium-11 columns">
+        <div class="blog-post">
+          <table class="table table-striped">
+        <th>Id</th>
+        <th>Titre</th>
+        <th>Contenu</th>
+        <th>Crée le </th>
+        <th>Mise à jour le</th>
+        <th>Publisher</th>
+        <th>Categorie</th>
+        <th colspan="3">operations</th>
+        <% @posts.each do |post|%>
+          <tr>
+            <td><%= post.id%></td>
+            <td><%= post.titre%></td>
+            <td><%= post.contenu%></td>
+            <td><%= post.created_at%></td>
+            <td><%= post.updated_at%></td>
+            <td><%= post.user.prenom%></td> 
+            <td><%= post.famille.nom%></td>
+            <td><%= link_to post , class: "stuff"  do  %><i class="glyphicon glyphicon-eye-open"></i><% end %></td>
+            <td><%= link_to edit_post_path(post) , class: "stuff"  do  %><i class="glyphicon glyphicon-pencil"></i><% end %></td>
+            <td><%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } , class: "stuff"  do  %><i class="glyphicon glyphicon-remove"></i><% end %></td>
+        </tr>
+        <% end %>
+        </table>
+        </div>   
+      </div>
+      <div class="medium-1 columns" data-sticky-container>
+        <div class="sticky" data-sticky data-anchor="content">
+          <h4>Categories</h4>
+           <ul>
+            <% @category.each do |post| %>
+              <li><%= link_to post.nom, detail_path(post)%></li>
+            <% end %>
+          </ul>
+          <h4>Utilisateurs</h4>
+          <ul>
+            <% @user.each do |user| %>
+              <li><%= user.prenom%> <%= user.nom%></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div> 
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>

@@ -1,0 +1,101 @@
+<link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+
+  <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
+  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">Panel  Administration Site</li>
+        </ul>
+      </div>
+
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li class="menu-text"><%= current_user.prenom %> connecté en tant que <%= current_user.role.nom%></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="callout large primary">
+      <div class="row column text-center">
+        <h1>Espace Administrateur</h1>
+      </div>
+    </div>
+
+    <div class="row" id="content">
+      <div class="medium-11 columns">
+       
+      	<p id="notice"><%= notice %></p>
+
+		<p>
+		  <h3>Titre:
+		  <%= @post.titre %></h3>
+		</p>
+    <% if @post.image_url(:original).present?%>
+		<p>
+		  <strong>Image:</strong>
+		  <%= image_tag @post.image_url(:original).to_s  %>
+		</p>
+    <% end %>
+<p>
+  <% if @post.clip.attached?%>
+    <video
+      id="my-video"
+      class="video-js"
+      controls
+      preload="auto"
+      width="640"
+      height="264"
+      poster=""
+      data-setup="{}"
+    >
+      <source src="<%= url_for(@post.clip)%>" type="video/mp4" />
+  </video>
+  <% end %>
+  </p>
+
+		<p>
+		  <strong>Contenu:</strong>
+		  <%= @post.contenu %>
+		</p>
+
+		<p>
+		  <strong>Publisher:</strong>
+		  <%= @post.user.prenom %>
+		</p>
+      </div>
+      <div class="medium-1 columns" data-sticky-container>
+        <div class="sticky" data-sticky data-anchor="content">
+          <h4>Categories</h4>
+           <ul>
+            <% @category.each do |post| %>
+              <li><%= link_to post.nom, detail_path(post)%></li>
+            <% end %>
+          </ul>
+          <h4>Utilisateurs</h4>
+          <ul>
+            <% @user.each do |user| %>
+              <li><%= user.prenom%> <%= user.nom%></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row column">
+      <ul class="pagination" role="navigation" aria-label="Pagination">
+        <li><%= link_to 'Modifier', edit_post_path(@post) %> </li>
+        <li><%= link_to 'Retour', posts_path %></li>
+      </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+ 
+

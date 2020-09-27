@@ -1,0 +1,95 @@
+<!-- Start Top Bar -->
+      <div class="alert alert-success">
+        <%= notice %>
+      </div>
+
+
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text">Panel  Administration Site</li>
+        </ul>
+      </div>
+
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li class="menu-text"><%= current_user.prenom %> connecté en tant que <%= current_user.role.nom%></li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="callout large primary">
+      <div class="row column text-center">
+        <h1>Espace Administrateur</h1>
+      </div>
+    </div>
+
+    <div class="row" id="content">
+      <div class="medium-11 columns">
+        <%= form_with(model: post, local: true) do |form| %>
+          <% if post.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+              <ul>
+                <% post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= form.label :titre %>
+        <%= form.text_field :titre , class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :contenu %>
+        <%= form.text_area :contenu, size: "30x10", class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :videoyoutube %>
+        <%= form.text_field :videoyoutube, class: 'form-control'%>
+      </div>
+      <div class="form-group">
+        <%= form.label :image, "Charger une image" %>
+        <%= form.file_field :image, class: 'form-control'%>
+      </div>
+      <div class="form-group">
+        <%= form.label :clip  ,"Charger Une video" %>
+        <%= form.file_field :clip, class: 'form-control'%>
+      </div>
+      <div class="form-group">
+        <%= form.label :famille_id, "Categorie"%>
+           <%=form.collection_select :famille_id,Famille.all,
+           :id,:nom,{required: true,include_blank: "Cliquer pour selectionner"}, class: 'form-control'%>
+      </div>
+      <% if post.persisted? %>
+          <div class="form-group">
+        <%= form.submit 'Mettre à jour', :class => 'btn btn-info btn-fill'%>
+      </div>
+    <% else %>
+      <div class="form-group">
+        <%= form.submit 'Nouveau', :class => 'btn btn-info btn-fill'%>
+      </div>
+    <% end %>
+      
+    <% end %>
+      </div>
+    </div>
+
+    <div class="row column">
+      <ul class="pagination" role="navigation" aria-label="Pagination">
+        <li><%= link_to 'Retour ', posts_path %></li>
+      </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+ 

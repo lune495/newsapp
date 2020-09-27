@@ -1,0 +1,561 @@
+   	<%= stylesheet_link_tag "bootstrap.css" %>
+    <%= stylesheet_link_tag "magnific-popup.css" %>	
+    <%= stylesheet_link_tag "animate.min.css" %>
+    <%= stylesheet_link_tag "owl.carousel.css" %>
+    <%= stylesheet_link_tag "jquery-ui.css" %>
+    <%= stylesheet_link_tag "main.css" %> 
+ <header>
+			
+			<div class="header-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-6 header-top-left no-padding">
+							<ul>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-behance"></i></a></li>
+							</ul>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-6 header-top-right no-padding">
+							<ul>
+								<li><a href="tel:+440 012 3654 896"><span class="lnr lnr-phone-handset"></span><span>+221 77 176 64 28</span></a></li>
+								<li><a href="mailto:support@colorlib.com"><span class="lnr lnr-envelope"></span><span>badaralune9@gmail.com</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="logo-wrap">
+				<div class="container">
+					<div class="row justify-content-between align-items-center">
+						<div class="col-lg-4 col-md-4 col-sm-12 logo-left no-padding">
+							<a href="index.html">
+								<h1>SeneXibar</h1>
+							</a>
+						</div>
+						<div class="col-lg-8 col-md-8 col-sm-12 logo-right ">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container main-menu" id="main-menu">
+				<div class="row align-items-center justify-content-between">
+					<nav id="nav-menu-container">
+						<ul class="nav-menu">
+							<li class="menu-active"><a href="index.html">Actualité</a></li>
+							<li><a href="archive.html">Sport</a></li>
+							<li><a href="category.html">Société</a></li>
+							<li class="menu-has-children"><a href="">Fait-Divers</a>
+							<!-- <ul>
+								<li><a href="standard-post.html">Standard Post</a></li>
+								<li><a href="image-post.html">Image Post</a></li>
+								<li><a href="gallery-post.html">Gallery Post</a></li>
+								<li><a href="video-post.html">Video Post</a></li>
+								<li><a href="audio-post.html">Audio Post</a></li>
+							</ul> -->
+						</li>
+						<li><a href="about.html">Politique</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+					</nav><!-- #nav-menu-container -->
+					<div class="navbar-right">
+						<form class="Search">
+							<input type="text" class="form-control Search-box" name="Search-box" id="Search-box" placeholder="Search">
+							<label for="Search-box" class="Search-box-label">
+								<span class="lnr lnr-magnifier"></span>
+							</label>
+							<span class="Search-close">
+								<span class="lnr lnr-cross"></span>
+							</span>
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="site-main-container">
+			<!-- Start top-post Area -->
+			<section class="top-post-area pt-10">
+				<div class="container no-padding">
+					<div class="row small-gutters">
+						<div class="col-lg-8 top-post-left">
+								<% unless @post.blank? %>
+								<div class="feature-image-thumb relative">
+									<div class="overlay overlay-bg"></div>
+									<%= link_to image_tag(@post.image_url(:original)) , reference_path(@post.id),target: "_blank"%>
+								</div>
+								
+								<div class="top-post-details">
+									<ul class="tags">
+										<li><%= link_to @post.famille.nom , reference_path(@post.id),target: "_blank"%></li>
+									</ul>
+										<h3><%= link_to @post.titre , reference_path(@post.id) ,class: "a-link",target: "_blank"%></h3>
+									<ul class="meta">
+										<li><a href="#"><span class="lnr lnr-user"></span>Fallou Diop</a></li>
+										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Commentairess</a></li>
+									</ul>
+								</div>
+								<% end %>
+						</div>
+
+
+						<div class="col-lg-4 top-post-right">
+							<div class="single-top-post">
+								<% unless @post_actualite.blank? %>
+								<div class="feature-image-thumb relative">
+									<div class="overlay overlay-bg"></div>
+									<%= link_to image_tag(@post_actualite.image_url(:original)) , reference_path(@post_actualite.id),target: "_blank"%>
+								</div>
+
+								<div class="top-post-details">
+									<ul class="tags">
+										<li><%= link_to @post_actualite.famille.nom , reference_path(@post_actualite.id),target: "_blank"%></li>
+									</ul>
+										<h4><%= link_to @post_actualite.titre , reference_path(@post_actualite.id) ,class: "a-link",target: "_blank"%></h4>									<ul class="meta">
+										<li><a href="#"><span class="lnr lnr-user"></span>Fallou Diop</a></li>
+										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Commentairess</a></li>
+									</ul>
+								</div>
+								<% end %>
+							</div>
+							<div class="single-top-post mt-10">
+								<% unless @post_divers.blank?%>
+								<div class="feature-image-thumb relative">
+									<div class="overlay overlay-bg"></div>
+									<%= link_to image_tag(@post_divers.image_url(:original)) , reference_path(@post_divers.id),target: "_blank"%>
+								</div>
+								<div class="top-post-details">
+									<ul class="tags">
+										<li><%= link_to @post_divers.famille.nom , reference_path(@post_divers.id),target: "_blank"%></li>
+									</ul>
+									<h4>	<%= link_to @post_divers.titre , reference_path(@post_divers.id) ,class: "a-link",target: "_blank"%>
+									<ul class="meta">
+										<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+										<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+										<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+									</ul>
+								</div>
+								<% end %>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="news-tracker-wrap">
+								<h6><span>Actualité Politique:</span>   <a href="#">Discours de son Excelence</a></h6>
+							</div>
+						</div>
+					</div>
+			</section>
+
+			<section class="latest-post-area pb-120">
+				<div class="container no-padding">
+					<div class="row">
+						<div class="col-lg-8 post-list">
+							<!-- Start latest-post Area -->
+							<div class="latest-post-wrap">
+								<h4 class="cat-title">Dernieres Nouvelles de la Politique de cette semaine</h4>
+								<div class="single-latest-post row align-items-center">
+									<% @post_politique.each do |politique|%>
+									<div class="col-lg-5 post-left">
+										<div class="feature-img relative">
+											<div class="overlay overlay-bg"></div>
+											<%= image_tag politique.image_url(:original)%>
+										</div>
+										<ul class="tags">
+											<li><a href="#"><%= politique.famille.nom%></a></li>
+										</ul>
+									</div>
+									<div class="col-lg-7 post-right">
+										<a href="image-post.html">
+											<h4><%= politique.titre.first(70)...%></h4>
+										</a>
+										<ul class="meta">
+											<li><a href="#"><span class="lnr lnr-user"></span>Fallou Diop</a></li>
+											<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+											<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+										</ul>
+										<p class="excert">
+											<%= politique.contenu.first(100)...%>
+										</p>
+									</div>
+									<% end %>
+								</div>
+								<!-- End latest-post Area -->		
+								<!-- Start banner-ads Area -->
+								<div class="col-lg-12 ad-widget-wrap mt-30 mb-30">
+									<%= image_tag("societe.png")%>
+								</div>
+								<!-- End banner-ads Area -->
+								<!-- Start popular-post Area -->
+								<div class="popular-post-wrap">
+									<h4 class="title">Popular Posts</h4>
+									<div class="feature-post relative">
+										<div class="feature-img relative">
+											<div class="overlay overlay-bg"></div>
+											<%= image_tag("politique.png")%>
+										</div>
+										<div class="details">
+											<ul class="tags">
+												<li><a href="#">Food Habit</a></li>
+											</ul>
+											<a href="image-post.html">
+												<h3>A Discount Toner Cartridge Is Better Than Ever.</h3>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="row mt-20 medium-gutters">
+										<div class="col-lg-6 single-popular-post">
+											<div class="feature-img-wrap relative">
+												<div class="feature-img relative">
+													<div class="overlay overlay-bg"></div>
+													<%= image_tag("politique.png")%>
+												</div>
+												<ul class="tags">
+													<li><a href="#">Travel</a></li>
+												</ul>
+											</div>
+											<div class="details">
+												<a href="image-post.html">
+													<h4>A Discount Toner Cartridge Is
+													Better Than Ever.</h4>
+												</a>
+												<ul class="meta">
+													<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+													<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+													<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
+												</ul>
+												<p class="excert">
+													Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor incididunt ed do eius.
+												</p>
+											</div>
+										</div>
+										<div class="col-lg-6 single-popular-post">
+											<div class="feature-img-wrap relative">
+												<div class="feature-img relative">
+													<div class="overlay overlay-bg"></div>
+													<%= image_tag("politique.png")%>
+												</div>
+												<ul class="tags">
+													<li><a href="#">Travel</a></li>
+												</ul>
+											</div>
+											<div class="details">
+												<a href="image-post.html">
+													<h4>A Discount Toner Cartridge Is
+													Better Than Ever.</h4>
+												</a>
+												<ul class="meta">
+													<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+													<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+													<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
+												</ul>
+												<p class="excert">
+													Lorem ipsum dolor sit amet, consecteturadip isicing elit, sed do eiusmod tempor incididunt ed do eius.
+												</p>
+											</div>
+										</div>
+									</div>
+
+							</div>
+							<div class="relavent-story-post-wrap mt-30">
+								<h4 class="title">Relavent Stories</h4>
+								<div class="relavent-story-list-wrap">
+									<div class="single-relavent-post row align-items-center">
+										<div class="col-lg-5 post-left">
+											<div class="feature-img relative">
+												<div class="overlay overlay-bg"></div>
+												<%= image_tag("politique.png")%>
+											</div>
+											<ul class="tags">
+												<li><a href="#">Lifestyle</a></li>
+											</ul>
+										</div>
+										<div class="col-lg-7 post-right">
+											<a href="image-post.html">
+												<h4>A Discount Toner Cartridge Is
+												Better Than Ever.</h4>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+											</ul>
+											<p class="excert">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+											</p>
+										</div>
+									</div>
+									<div class="single-relavent-post row align-items-center">
+										<div class="col-lg-5 post-left">
+											<div class="feature-img relative">
+												<div class="overlay overlay-bg"></div>
+												<%= image_tag("politique.png")%>
+											</div>
+											<ul class="tags">
+												<li><a href="#">Science</a></li>
+											</ul>
+										</div>
+										<div class="col-lg-7 post-right">
+											<a href="image-post.html">
+												<h4>A Discount Toner Cartridge Is
+												Better Than Ever.</h4>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+											</ul>
+											<p class="excert">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+											</p>
+										</div>
+									</div>
+									<div class="single-relavent-post row align-items-center">
+										<div class="col-lg-5 post-left">
+											<div class="feature-img relative">
+												<div class="overlay overlay-bg"></div>
+												<%= image_tag("politique.png")%>
+											</div>
+											<ul class="tags">
+												<li><a href="#">Travel</a></li>
+											</ul>
+										</div>
+										<div class="col-lg-7 post-right">
+											<a href="image-post.html">
+												<h4>A Discount Toner Cartridge Is
+												Better Than Ever.</h4>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06 Comments</a></li>
+											</ul>
+											<p class="excert">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4">
+							<div class="sidebars-area">
+								<div class="single-sidebar-widget editors-pick-widget">
+									<h6 class="title">Sport</h6>
+									<div class="editors-pick-post">
+										<% @post_sport.each do |sport|%>
+										<% if sport.image_url(:original).present?%>
+										<div class="feature-img-wrap relative">
+											<div class="feature-img relative">
+												<div class="overlay overlay-bg"></div>
+												<%= image_tag(sport.image_url(:original))%>
+											</div>
+											<ul class="tags">
+												<li><a href="#"><%= sport.famille.nom%></a></li>
+											</ul>
+										</div>
+										<% end %>
+
+										<% if sport.videoyoutube != nil%>
+										<div class="feature-img-wrap relative">
+											<div class="feature-img relative">
+												<div class="overlay overlay-bg"></div>
+												<iframe width="640" height="360" src="https://www.youtube.com/embed/R_CO7F-VNGU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+											</div>
+											<ul class="tags">
+												<li><a href="#"><%= sport.famille.nom%></a></li>
+											</ul>
+										</div>
+										<% end %>
+
+										<% if sport.clip.attached?%>
+										<div class="feature-img-wrap relative">
+											<div class="feature-img relative">
+												<div class="overlay overlay-bg"></div>
+												 <video
+												      id="my-video"
+												      class="video-js"
+												      controls
+												      preload="auto"
+												      width="640"
+												      height="264"
+												      poster=""
+												      data-setup="{}">
+												      <source src="<%= url_for(sport.clip)%>" type="video/mp4" />
+												  </video>
+											</div>
+											<ul class="tags">
+												<li><a href="#"><%= sport.famille.nom%></a></li>
+											</ul>
+										</div>
+										<% end %>
+										<div class="details">
+											<a href="image-post.html">
+												<h4 class="mt-20"><%= sport.titre %></h4>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-user"></span>Mark wiens</a></li>
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06 </a></li>
+											</ul>
+											<p class="excert">
+												<%= sport.contenu.first(80)...%>
+											</p>
+										</div>
+										<div class="post-lists">
+											<div class="single-post d-flex flex-row">
+												<div class="thumb">
+													<%= image_tag("politique.png")%>
+												</div>
+												<div class="detail">
+													<a href="image-post.html"><h6>Help Finding Information
+													Online is so easy</h6></a>
+													<ul class="meta">
+														<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+														<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
+													</ul>
+												</div>
+											</div>  
+										</div>
+										<% end %>
+									</div>
+								</div>
+								<div class="single-sidebar-widget ads-widget">
+									<iframe src="https://www.youtube.com/embed/cJG9_UKJfj0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+								<div class="single-sidebar-widget newsletter-widget">
+									<h6 class="title">Newsletter</h6>
+									<p>
+										Here, I focus on a range of items
+										andfeatures that we use in life without
+										giving them a second thought.
+									</p>
+									<div class="form-group d-flex flex-row">
+										<div class="col-autos">
+											<div class="input-group">
+												<input class="form-control" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" type="text">
+											</div>
+										</div>
+										<a href="#" class="bbtns">Subcribe</a>
+									</div>
+									<p>
+										You can unsubscribe us at any time
+									</p>
+								</div>
+								<div class="single-sidebar-widget most-popular-widget">
+									<h6 class="title">Most Popular</h6>
+									<div class="single-list flex-row d-flex">
+										<% if @post&.cached_image_data != nil %>
+										<div class="thumb">
+											<%= image_tag @post.image_url(:medium)%>
+										</div>
+										<div class="details">
+											<a href="image-post.html">
+												<h6>Help Finding Information
+												Online is so easy</h6>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
+											</ul>
+										</div>
+										<% end %>
+									</div>
+									<div class="single-list flex-row d-flex">
+										<div class="thumb">
+											<%= image_tag("politique.png")%>
+										</div>
+										<div class="details">
+											<a href="image-post.html">
+												<h6>Compatible Inkjet Cartr
+												world famous</h6>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="single-list flex-row d-flex">
+										<div class="thumb">
+											<%= image_tag("politique.png")%>
+										</div>
+										<div class="details">
+											<a href="image-post.html">
+												<h6>5 Tips For Offshore Soft
+												Development </h6>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
+											</ul>
+										</div>
+									</div>
+									<div class="single-list flex-row d-flex">
+										<div class="thumb">
+											<%= image_tag("politique.png")%>
+										</div>
+										<div class="details">
+											<a href="image-post.html">
+												<h6>5 Tips For Offshore Soft
+												Development </h6>
+											</a>
+											<ul class="meta">
+												<li><a href="#"><span class="lnr lnr-calendar-full"></span>03 April, 2018</a></li>
+												<li><a href="#"><span class="lnr lnr-bubble"></span>06</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="single-sidebar-widget social-network-widget">
+									<h6 class="title">Reseaux sociaux</h6>
+									<ul class="social-list">
+										<li class="d-flex justify-content-between align-items-center fb">
+											<div class="icons d-flex flex-row align-items-center">
+												<i class="fa fa-facebook" aria-hidden="true"></i>
+												<p>983 Likes</p>
+											</div>
+											<a href="#">Like our page</a>
+										</li>
+										<li class="d-flex justify-content-between align-items-center tw">
+											<div class="icons d-flex flex-row align-items-center">
+												<i class="fa fa-twitter" aria-hidden="true"></i>
+												<p>983 Followers</p>
+											</div>
+											<a href="#">Follow Us</a>
+										</li>
+										<li class="d-flex justify-content-between align-items-center yt">
+											<div class="icons d-flex flex-row align-items-center">
+												<i class="fa fa-youtube-play" aria-hidden="true"></i>
+												<p>983 Subscriber</p>
+											</div>
+											<a href="#">Subscribe</a>
+										</li>
+										<li class="d-flex justify-content-between align-items-center rs">
+											<div class="icons d-flex flex-row align-items-center">
+												<i class="fa fa-rss" aria-hidden="true"></i>
+												<p>983 Subscribe</p>
+											</div>
+											<a href="#">Subscribe</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+				</div>
+			</section>
+		</div>
+
+
+
+
+
+
+		

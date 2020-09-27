@@ -1,0 +1,27 @@
+  <p id="notice"><%= flash.now[:notice]%></p>
+
+<h1>Familles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @familles.each do |famille| %>
+      <tr>
+        <td><%= famille.nom %></td>
+        <td><%= link_to 'Show', famille %></td>
+        <td><%= link_to 'Edit', edit_famille_path(famille) %></td>
+        <td><%= link_to 'Destroy', famille, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Famille', new_famille_path %>
